@@ -85,6 +85,7 @@ public static class TransportTask
                 suppliersPotenial[i] = double.NaN;
             for (int i = 0; i < consumerPotenial.Length; i++)
                 consumerPotenial[i] = double.NaN;
+
             // U0 = 0 - опорный потенциал
             suppliersPotenial[0] = 0;
             // Вычисляем потенциалы

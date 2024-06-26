@@ -2,13 +2,10 @@
 
 namespace PokerEquilibrium;
 
-public class PokerTable
+public class PokerTable(List<int> chipsOnPlaces)
 {
     // Поле содержащее количество фишек на местах
-    private readonly List<int> chipsOnPlaces;
-
-    // Конструктор стола
-    public PokerTable(List<int> chipsOnPlaces) => this.chipsOnPlaces = chipsOnPlaces;
+    private readonly List<int> chipsOnPlaces = chipsOnPlaces;
 
     // Метод проверки возможности равновесия фишек на покерном столе
     public bool CheckEquilibriumPossibility() => chipsOnPlaces.Sum() % chipsOnPlaces.Count == 0;
@@ -19,6 +16,12 @@ public class PokerTable
         if (!CheckEquilibriumPossibility())
         {
             Console.WriteLine("Balance impossible with this numbers.");
+            return 0;
+        }
+
+        if (chipsOnPlaces.Max() == chipsOnPlaces.Min())
+        {
+            Console.WriteLine("Chips are balanced already.");
             return 0;
         }
 
@@ -33,8 +36,8 @@ public class PokerTable
 
         // Заводим листы поставщиков и потребителей
         // Первый индекс места за столом, второе кол-во фишек необходимое или излишнее
-        List<Tuple<int, double>> suppliers = new List<Tuple<int, double>>();
-        List<Tuple<int, double>> consumers = new List<Tuple<int, double>>();
+        List<Tuple<int, double>> suppliers = [];
+        List<Tuple<int, double>> consumers = [];
 
         // Заполняем листы поставщиков и потребителей
         for (int i = 0; i < chipsOnPlaces.Count; i++)
@@ -59,10 +62,10 @@ public class PokerTable
         }
 
         // Создаем два листа запасов и потребностей для транспортной задачи
-        List<double> reserves = new List<double>();
+        List<double> reserves = [];
         foreach (var supplier in suppliers)
             reserves.Add(supplier.Item2);
-        List<double> needs = new List<double>();
+        List<double> needs = [];
         foreach (var consumer in consumers)
             needs.Add(consumer.Item2);
 
