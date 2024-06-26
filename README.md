@@ -1,4 +1,4 @@
-# PokerEquilibrium 
+# PokerEquilibrium net8.0
 
 <br/> Jose set up a circular poker table for his friends so that each of the seats at the table has the same number of poker chips.
 <br/> But when Jose wasn’t looking, someone rearranged all of the chips so that they are no longer evenly distributed!
